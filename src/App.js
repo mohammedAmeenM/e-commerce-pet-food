@@ -8,16 +8,19 @@ import Collection from "./components/Collection";
 import Cart from "./components/Cart";
 import Signup from "./components/Signup";
 import { createContext, useState } from "react";
+import { Product } from "./components/ProductData";
+import ViewProduct from "./components/ViewProduct";
 
 export const UserLogin = createContext();
 
 function App() {
   const [user, setUser] = useState([]);
   const [login, setLogin] = useState(false);
+  const [product]=useState(Product)
 
   return (
     <div className="App">
-      <UserLogin.Provider value={{ user, setUser, login, setLogin }}>
+      <UserLogin.Provider value={{ user, setUser, login, setLogin,product }}>
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
@@ -26,6 +29,7 @@ function App() {
           <Route path="/dog" element={<Dog />} />
           <Route path="/cat" element={<Cat />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/viewproduct/:id" element={<ViewProduct />} />
         </Routes>
       </UserLogin.Provider>
     </div>

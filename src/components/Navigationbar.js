@@ -24,17 +24,17 @@ const Navigationbar = () => {
           <Nav className="me-auto nav-links">
             <Nav.Link
               className="underline-collection"
-              onClick={() => navigate("collection")}
+              onClick={() => navigate("/collection")}
             >
               Collection
             </Nav.Link>
             <Nav.Link
               className="underline-cat "
-              onClick={() => navigate("cat")}
+              onClick={() => navigate('/cat')}
             >
               Cat
             </Nav.Link>
-            <Nav.Link className="underline-dog" onClick={() => navigate("dog")}>
+            <Nav.Link className="underline-dog" onClick={() => navigate("/dog")}>
               Dog
             </Nav.Link>
           </Nav>
@@ -51,13 +51,13 @@ const Navigationbar = () => {
               <Button variant="outline-dark">Search</Button>
             </Form>
             <Nav.Link
-              onClick={() => navigate("cart")}
+              onClick={() => navigate("/cart")}
               style={{ fontSize: "27px" }}
             >
               <HiShoppingCart />
             </Nav.Link>
             <Nav.Link
-              onClick={() => navigate("login")}
+              onClick={() => navigate("/login")}
               style={{ fontSize: "27px" }}
             >
               <CiLogin />

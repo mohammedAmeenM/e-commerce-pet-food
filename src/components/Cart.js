@@ -3,9 +3,10 @@ import React from 'react'
 const Cart = () => {
   return (
     <div>
-      Cart
+      cart
     </div>
   )
 }
 
 export default Cart
+
