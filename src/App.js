@@ -16,11 +16,12 @@ export const UserLogin = createContext();
 function App() {
   const [user, setUser] = useState([]);
   const [login, setLogin] = useState(false);
-  const [product]=useState(Product)
+  const [product]=useState(Product);
+  const [cart,setCart]=useState([]);
 
   return (
     <div className="App">
-      <UserLogin.Provider value={{ user, setUser, login, setLogin,product }}>
+      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,cart,setCart }}>
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

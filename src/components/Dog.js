@@ -9,10 +9,10 @@ const Dog = () => {
   const {product}=useContext(UserLogin);
   const dogProduct=product.filter((item)=>item.Animal==='Dog')
   return (
-    <>
+    <div style={{ background: 'rgb(230, 230, 219)'}}>
       <Navigationbar />
       <Container>
-      <h1 style={{textAlign:'center',padding:'10px'}}>Dog Products</h1>
+      <h1 style={{textAlign:'center',padding:'10px'}}>Dog Products</h1><hr />
 
     <div className="d-flex align-items-center justify-content-center flex-wrap">
 
@@ -36,7 +36,7 @@ const Dog = () => {
       }
       </div>
         </Container>
-    </>
+    </div>
   )
 }
 

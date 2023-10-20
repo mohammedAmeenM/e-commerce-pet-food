@@ -11,7 +11,7 @@ const Signup = () => {
   const submitClick = (eve) => {
     const setName = nameRef.current.value;
     const setPassword = passwordRef.current.value;
-    const value = { name: setName, password: setPassword, id: Date.now() };
+    const value = { name: setName, password: setPassword };
 
     if (!setName || !setPassword) {
       alert("fill");

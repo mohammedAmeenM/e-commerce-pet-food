@@ -15,7 +15,7 @@ const Navigationbar = () => {
     <Navbar expand="lg" className="nav" sticky="top">
       <Container fluid className="nav-bar">
         <Navbar.Brand>
-          <h1 className="nav-title" onClick={() => navigate("/")}>
+          <h1 style={{cursor:'pointer'}} className="nav-title" onClick={() => navigate("/")}>
             Pets Foods
           </h1>
         </Navbar.Brand>

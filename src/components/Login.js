@@ -21,7 +21,7 @@ const Login = () => {
       navigate("/");
       alert("Login Success");
     } else {
-      alert("please curect username or password");
+      alert(" incorrect username or password");
     }
   };
 
