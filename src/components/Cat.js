@@ -9,7 +9,7 @@ const Cat = () => {
   const {product}=useContext(UserLogin)
   const catProduct=product.filter((item)=>item.Animal==='Cat')
   return (
-    <div>
+    <div style={{ background: 'rgb(230, 230, 219)'}}>
       <Navigationbar />
       <Container>
       <h1 style={{textAlign:'center',padding:'10px'}}>Cat Products</h1><hr />

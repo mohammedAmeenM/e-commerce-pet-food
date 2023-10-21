@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Product } from './ProductData'
 import { Button, Card, CardBody, CardImg, CardTitle, Container } from 'react-bootstrap'
 import { UserLogin } from '../App'
+import Navigationbar from './Navigationbar'
 
 const ViewProduct = () => {
   const navigate=useNavigate()
@@ -14,6 +15,7 @@ const ViewProduct = () => {
         const [newFilter]=filteredProduct
         cart.filter((item)=>item.Id===id)
         setCart([...cart,newFilter])
+        console.log(cart);
         alert('Successful add to cart')
        
      
@@ -24,8 +26,11 @@ const ViewProduct = () => {
       }
     }
   return (
-    <>
+    <div style={{ background: 'rgb(230, 230, 219)'}}>
+      <Navigationbar />
+  
     <Container className="d-flex justify-content-center align-items-center mt-5" >
+      
 
     {
         filteredProduct.map((item)=>(
@@ -47,7 +52,7 @@ const ViewProduct = () => {
       ))
     }
     </Container>
-    </>
+    </div>
   )
 }
 

@@ -29,10 +29,10 @@ const Login = () => {
     <div style={{ alignItems: "center" }} className="p-4  mt-4 ">
       <Container
         className="border p-4  mt-5 "
-        style={{ width: "500px", alignItems: "center", borderRadius: "20px" }}
+        style={{ width: "500px", alignItems: "center", borderRadius: "20px",background: 'rgb(230, 230, 219)' }}
       >
         <h1 style={{ textAlign: "center" }}>Login </h1>
-        <div>
+        <div >
           <Form
             className="border p-4 m-4 bg-white"
             style={{ borderRadius: "20px" }}

@@ -23,7 +23,7 @@ const Cart = () => {
    setCart(Filterdata)
   }
   return (
-    <>
+    <div style={{ background: 'rgb(230, 230, 219)'}}>
     <Navigationbar />
       <Container>
         <h2 style={{textAlign:'center',padding:'10px'}}> My Cart</h2><hr />
@@ -55,7 +55,7 @@ const Cart = () => {
       }
       </div>
       </Container>
-    </>
+    </div>
   )
 }
 
