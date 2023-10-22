@@ -2,9 +2,11 @@ import React, { useContext } from 'react'
 import { UserLogin } from '../App'
 import { Button, Card, CardBody, CardImg, CardTitle, Container } from 'react-bootstrap';
 import Navigationbar from './Navigationbar';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const {cart,setCart}=useContext(UserLogin);
+  const navigate=useNavigate()
   const incre = (Id) => {
     const newQty = cart.map((item) =>
       item.Id === Id ? { ...item, Qty: item.Qty + 1 } : item
@@ -22,6 +24,7 @@ const Cart = () => {
    const Filterdata=cart.filter((item)=>item.Id !==id)
    setCart(Filterdata)
   }
+  const totalPrice = cart.reduce((total, item) => total + item.Price * item.Qty, 0);
   return (
     <div style={{ background: 'rgb(230, 230, 219)'}}>
     <Navigationbar />
@@ -53,6 +56,14 @@ const Cart = () => {
           </div>
         ))
       }
+      
+      </div>
+      <div className=' p-5 ' style={{background: 'rgb(230, 230, 219)'}}>
+        <h2 className='pb-4' style={{textAlign:'center'}}>Total Price : {totalPrice}</h2>
+        <div style={{textAlign:'center'}}>
+        <Button onClick={()=>navigate('/')}>Back To Home</Button>
+        <Button className='m-2'>Cheak Out</Button>
+        </div>
       </div>
       </Container>
     </div>

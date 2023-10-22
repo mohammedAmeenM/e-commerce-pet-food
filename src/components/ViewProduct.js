@@ -4,7 +4,6 @@ import { Product } from './ProductData'
 import { Button, Card, CardBody, CardImg, CardTitle, Container } from 'react-bootstrap'
 import { UserLogin } from '../App'
 import Navigationbar from './Navigationbar'
-
 const ViewProduct = () => {
   const navigate=useNavigate()
   const {login,cart,setCart}=useContext(UserLogin);
@@ -12,16 +11,18 @@ const ViewProduct = () => {
     const filteredProduct=Product.filter((item)=>item.Id===parseInt(id))
     const AddCart=()=>{
       if(login){
-        const [newFilter]=filteredProduct
-        cart.filter((item)=>item.Id===id)
-        setCart([...cart,newFilter])
-        console.log(cart);
-        alert('Successful add to cart')
-       
-     
+        const [newFilter]=filteredProduct;
+       const filterCart= cart.filter((item)=>item.Id===newFilter.Id);
+       if(filterCart.length>0){
+          alert('product already set to cart');
+       }
+       else{
+        setCart (prevState => [...prevState, newFilter]);
+        alert('Successful add to cart');
+       }
       }
       else{
-        alert('please , login')
+        alert('please login')
         navigate('/login')
       }
     }

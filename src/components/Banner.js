@@ -1,6 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import banner from '../Assets/banner-1.png'
-import banner2 from '../Assets/banner2.png'
+// import banner2 from '../Assets/banner2.png'
 
 
 function Banner() {
@@ -14,7 +14,7 @@ function Banner() {
       </Carousel.Item>
       <Carousel.Item interval={2000}>
 
-      <img src= {banner2} style={{width:'100%'}} alt="Example Image" />
+      <img src= {banner} style={{width:'100%'}} alt="Example Image" />
         <Carousel.Caption>
           
         </Carousel.Caption>

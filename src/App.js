@@ -10,6 +10,8 @@ import Signup from "./components/Signup";
 import { createContext, useState } from "react";
 import { Product } from "./components/ProductData";
 import ViewProduct from "./components/ViewProduct";
+import AdminPage from "./admin/AdminPage";
+
 
 export const UserLogin = createContext();
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/cat" element={<Cat />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/viewproduct/:id" element={<ViewProduct />} />
+          <Route path='/admin' element={<AdminPage />} />
         </Routes>
       </UserLogin.Provider>
     </div>
