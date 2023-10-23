@@ -62,7 +62,7 @@ const Cart = () => {
         <h2 className='pb-4' style={{textAlign:'center'}}>Total Price : {totalPrice}</h2>
         <div style={{textAlign:'center'}}>
         <Button onClick={()=>navigate('/')}>Back To Home</Button>
-        <Button className='m-2'>Cheak Out</Button>
+        <Button className='m-2'>Buy now</Button>
         </div>
       </div>
       </Container>
