@@ -12,9 +12,7 @@ const Login = () => {
     const newNameRef = nameRef.current.value;
     const newPasswordRef = passwordRef.current.value;
     const findName = user.find((users) => users.name === newNameRef);
-    const findPassword = user.find(
-      (users) => users.password === newPasswordRef
-    );
+    const findPassword = user.find((users) => users.password === newPasswordRef);
     
     if (findName && findPassword) {
       setLogin(true);

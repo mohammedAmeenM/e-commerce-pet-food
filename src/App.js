@@ -20,10 +20,11 @@ function App() {
   const [login, setLogin] = useState(false);
   const [product]=useState(Product);
   const [cart,setCart]=useState([]);
+  const [search,setSearch]=useState('');
 
   return (
     <div className="App">
-      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,cart,setCart }}>
+      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,cart,setCart,search,setSearch }}>
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
