@@ -19,8 +19,8 @@ const Home = () => {
     <div className="d-flex align-items-center justify-content-center flex-wrap">
       <Container fluid className="d-flex align-items-center justify-content-center flex-wrap">
 
-      < img src={dog} onClick={()=>navigate('/dog')} />
-      <img src={cat} onClick={()=>navigate('/cat')}/>
+      < img style={{cursor:'pointer'}} src={dog} alt='dog cart' onClick={()=>navigate('/dog')} />
+      <img style={{cursor:'pointer'}} src={cat} alt='cat cart' onClick={()=>navigate('/cat')}/>
       </Container>
     </div>
     <Footer />

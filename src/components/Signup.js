@@ -15,12 +15,15 @@ const Signup = () => {
 
     if (!setName || !setPassword) {
       alert("fill");
-    } else {
-      navigate("/login");
+    } 
+    if (value.password.length < 6) {
+      alert("Password must be at least 6 characters.");
+      return;
     }
 
     setUser([...user, value]);
     console.log(user);
+    navigate('/login')
   };
 
   return (

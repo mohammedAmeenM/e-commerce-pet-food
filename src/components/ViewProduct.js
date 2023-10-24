@@ -19,6 +19,7 @@ const ViewProduct = () => {
        else{
         setCart (prevState => [...prevState, newFilter]);
         alert('Successful add to cart');
+        
        }
       }
       else{
