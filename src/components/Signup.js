@@ -8,7 +8,7 @@ const Signup = () => {
   const { user, setUser } = useContext(UserLogin);
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
-  const submitClick = (eve) => {
+  const submitClick = () => {
     const setName = nameRef.current.value;
     const setPassword = passwordRef.current.value;
     const value = { name: setName, password: setPassword };

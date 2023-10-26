@@ -16,7 +16,7 @@ const ViewProduct = () => {
        if(filterCart.length>0){
           alert('product already set to cart');
        }
-       else{
+       else{ 
         setCart (prevState => [...prevState, newFilter]);
         alert('Successful add to cart');
         

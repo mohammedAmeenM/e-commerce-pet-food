@@ -1,14 +1,16 @@
 import React, { useContext, useRef } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import {  Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const navigate = useNavigate();
   const { user, setLogin } = useContext(UserLogin);
   const nameRef = useRef();
   const passwordRef = useRef();
-  const handileclick = (eve) => {
+  const handileclick = () => {
     const newNameRef = nameRef.current.value;
     const newPasswordRef = passwordRef.current.value;
     const findName = user.find((users) => users.name === newNameRef);
@@ -17,7 +19,8 @@ const Login = () => {
     if (findName && findPassword) {
       setLogin(true);
       navigate("/");
-      alert("Login Success");
+      toast.success('Success Notification !');
+       
     } else {
       alert(" incorrect username or password");
     }
@@ -33,7 +36,7 @@ const Login = () => {
         <div >
           <Form
             className="border p-4 m-4 bg-white"
-            style={{ borderRadius: "20px" }}
+            style={{ borderRadius: "20px"}}
           >
             <input
               ref={nameRef}
@@ -66,6 +69,8 @@ const Login = () => {
                 <Button variant="outline-dark" onClick={handileclick}>
                   Login
                 </Button>
+                <ToastContainer />
+                
               </div>
               <div className="col-4">
                 <p>

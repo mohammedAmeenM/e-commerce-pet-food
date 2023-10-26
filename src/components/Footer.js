@@ -12,7 +12,7 @@ const Footer = () => {
 
         <div className="flex-warp"  >
             
-            <h3   >Blep World</h3><hr />
+            <h3   >Blep</h3><hr />
             <div>
 
             <p><b>Contact Us </b></p>

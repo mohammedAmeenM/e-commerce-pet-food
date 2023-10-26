@@ -10,7 +10,9 @@ import Signup from "./components/Signup";
 import { createContext, useState } from "react";
 import { Product } from "./components/ProductData";
 import ViewProduct from "./components/ViewProduct";
-import AdminPage from "./admin/AdminPage";
+import AdminLogin from "./admin/AdminLogin";
+import AdminPage from "./admin/SideBar";
+
 
 
 export const UserLogin = createContext();
@@ -21,20 +23,22 @@ function App() {
   const [product]=useState(Product);
   const [cart,setCart]=useState([]);
   const [search,setSearch]=useState('');
+  
 
   return (
     <div className="App">
       <UserLogin.Provider value={{ user, setUser, login, setLogin,product,cart,setCart,search,setSearch }}>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/dog" element={<Dog />} />
           <Route path="/cat" element={<Cat />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/viewproduct/:id" element={<ViewProduct />} />
-          <Route path='/admin' element={<AdminPage />} />
+          <Route path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/adminpage" element={<AdminPage />} />
         </Routes>
       </UserLogin.Provider>
     </div>

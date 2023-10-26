@@ -79,16 +79,19 @@ else{
               <HiShoppingCart />
             </Nav.Link>
             
-            <Nav.Link  style={{ fontSize: "27px" }} onClick={Logout}>
+                
+          
+          { login?<Nav.Link  style={{ fontSize: "27px" }} onClick={Logout}>
               <CiLogout />
-            </Nav.Link>
-            <Nav.Link
+            </Nav.Link>: <Nav.Link
               onClick={() => navigate("/login")}
               style={{ fontSize: "27px" }}
             >
               <CiLogin />
             </Nav.Link>
-            <Nav.Link style={{ fontSize: "27px" }} onClick={()=>navigate('/admin')}>
+          } 
+           
+            <Nav.Link style={{ fontSize: "27px" }} onClick={()=>navigate('/adminlogin')}>
               <RiAdminFill />
             </Nav.Link>
           </Nav>
