@@ -2,8 +2,8 @@ import React, { useContext, useRef } from "react";
 import {  Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import {  toast } from "react-toastify";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,10 +19,10 @@ const Login = () => {
     if (findName && findPassword) {
       setLogin(true);
       navigate("/");
-      toast.success('Success Notification !');
+      toast.success('Login Success!');
        
     } else {
-      alert(" incorrect username or password");
+      toast.error('" incorrect username or password"')
     }
   };
 
@@ -69,7 +69,7 @@ const Login = () => {
                 <Button variant="outline-dark" onClick={handileclick}>
                   Login
                 </Button>
-                <ToastContainer />
+                
                 
               </div>
               <div className="col-4">

@@ -12,6 +12,8 @@ import { Product } from "./components/ProductData";
 import ViewProduct from "./components/ViewProduct";
 import AdminLogin from "./admin/AdminLogin";
 import AdminPage from "./admin/SideBar";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -41,6 +43,7 @@ function App() {
           <Route path="/adminpage" element={<AdminPage />} />
         </Routes>
       </UserLogin.Provider>
+      <ToastContainer />
     </div>
   );
 }

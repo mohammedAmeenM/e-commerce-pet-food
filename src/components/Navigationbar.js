@@ -10,6 +10,7 @@ import { CiLogin } from "react-icons/ci";
 import { Button, Form } from "react-bootstrap";
 import { UserLogin } from "../App";
 import {CiLogout} from 'react-icons/ci'
+import { toast } from "react-toastify";
 
 const Navigationbar = () => {
   const navigate = useNavigate();
@@ -24,10 +25,10 @@ const Logout=()=>{
 if(login){
   setLogin(false)
   setCart([])
-  alert('logout Success')
+  toast.success('Logout Success')
 }
 else{
-  alert('please login')
+  
   navigate('/login')
 }
 }
@@ -61,7 +62,7 @@ else{
         </Navbar.Collapse>
         <Navbar.Collapse className="icons" style={{ justifyContent: "end" }}>
           <Nav style={{ gap: "0.6rem", alignItems: "center" }}>
-            <Form className="d-flex">
+            {/* <Form className="d-flex">
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -71,7 +72,7 @@ else{
                 onChange={(e)=>setSearch(e.target.value)}
               />
               <Button filteredProducts={filteredProducts} variant="outline-dark">Search</Button>
-            </Form>
+            </Form> */}
             <Nav.Link
               onClick={() => navigate("/cart")}
               style={{ fontSize: "27px" }}

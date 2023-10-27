@@ -1,27 +1,39 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserLogin);
   const nameRef = useRef(null);
+  const emailRef=useRef(null);
   const passwordRef = useRef(null);
-  const submitClick = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+  const submitClick = (e) => {
+    e.preventDefault();
     const setName = nameRef.current.value;
+    const setEmail=emailRef.current.value;
     const setPassword = passwordRef.current.value;
     const value = { name: setName, password: setPassword };
 
-    if (!setName || !setPassword) {
-      alert("fill");
+    if (!setName || !setEmail || !setPassword) {
+      setErrorMessage('Please fill in all fields.');
+      return;
     } 
-    if (value.password.length < 6) {
-      alert("Password must be at least 6 characters.");
+    const isEmailValid = setEmail.includes('@') && setEmail.includes('.');  
+    if (!isEmailValid) {
+      setErrorMessage('Please enter a valid email address.');
       return;
     }
+    if (setPassword.length < 4) {
+      setErrorMessage('Password must be at least 6 characters long.');
+      return;
+    }
+    setErrorMessage('');
 
-    setUser([...user, value]);
+      setUser([...user, { name: setName, email: setEmail, password: setPassword }]);
     console.log(user);
     navigate('/login')
   };
@@ -49,13 +61,14 @@ const Signup = () => {
               borderRadius: "10px",
               border: "1.2px solid",
             }}
-          />{" "}
+          />
           <br />
           <br />
           <input
             type="email"
             name="email"
             placeholder="E-mail"
+            ref={emailRef}
             required
             style={{
               width: "300px",
@@ -63,7 +76,7 @@ const Signup = () => {
               borderRadius: "10px",
               border: "1.2px solid",
             }}
-          />{" "}
+          />
           <br />
           <br />
           <input
@@ -78,9 +91,13 @@ const Signup = () => {
               borderRadius: "10px",
               border: "1.2px solid",
             }}
-          />{" "}
+          />
           <br />
           <br />
+          {errorMessage && (
+            <p style={{ color: 'red' }}>{errorMessage}</p>
+          )}
+
           <Button variant="outline-dark" onClick={submitClick}>
             Submit
           </Button>

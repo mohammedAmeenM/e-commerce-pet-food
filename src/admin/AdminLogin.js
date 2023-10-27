@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 
 const AdminLogin = () => {
@@ -13,11 +14,11 @@ const AdminLogin = () => {
         console.log(newAdminName)
         console.log(newAdminPassword);
         if(newAdminName==='admin'&&newAdminPassword==='admin123'){
-            alert('admin login success')
+            toast.success('admin Login success')
             navigate('/adminpage')
         }
         else{
-            alert('please enter valied username or password')
+            toast.error('please enter valied username or password')
         }
     }
   return (

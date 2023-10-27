@@ -3,6 +3,7 @@ import { UserLogin } from '../App'
 import { Button, Card, CardBody, CardImg, CardTitle, Container } from 'react-bootstrap';
 import Navigationbar from './Navigationbar';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const {cart,setCart}=useContext(UserLogin);
@@ -33,6 +34,9 @@ const Cart = () => {
   const totalCartItem=(item)=>{
     return item.Price*item.Qty
   }
+  const buyProduct=()=>{
+    toast.success('Success buy product')
+  }
   return (
     <div style={{ background: 'rgb(230, 230, 219)'}}>
     <Navigationbar />
@@ -57,7 +61,7 @@ const Cart = () => {
               <h6>Total :₹{totalCartItem(item)}</h6>
               </div>
               <div  >
-              <Button  variant="outline-dark">Buy Product</Button>
+              <Button onClick={buyProduct}  variant="outline-dark">Buy Product</Button>
               <Button  className='m-2'  variant="outline-dark" onClick={()=>remove(item.Id)}>Remove</Button>
             </div>
             </CardBody>
@@ -72,6 +76,7 @@ const Cart = () => {
         <h2 className='pb-4' style={{textAlign:'center'}}>Total Price : {totalPrice}</h2>
         <div style={{textAlign:'center'}}>
         <Button onClick={()=>navigate('/')}>Back To Home</Button>
+        <Button onClick={buyProduct} className='m-2'>Buy All Product</Button>
         <Button onClick={clearCart} className='m-2'>Clear Cart</Button>
         </div>
       </div>

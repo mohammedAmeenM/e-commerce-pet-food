@@ -4,6 +4,7 @@ import { Product } from './ProductData'
 import { Button, Card, CardBody, CardImg, CardTitle, Container } from 'react-bootstrap'
 import { UserLogin } from '../App'
 import Navigationbar from './Navigationbar'
+import { toast } from 'react-toastify'
 const ViewProduct = () => {
   const navigate=useNavigate()
   const {login,cart,setCart}=useContext(UserLogin);
@@ -14,16 +15,17 @@ const ViewProduct = () => {
         const [newFilter]=filteredProduct;
        const filterCart= cart.filter((item)=>item.Id===newFilter.Id);
        if(filterCart.length>0){
-          alert('product already set to cart');
+            toast.warning('product already set to cart')
        }
        else{ 
         setCart (prevState => [...prevState, newFilter]);
-        alert('Successful add to cart');
+       
+       toast.success('Successful add to cart')
         
        }
       }
       else{
-        alert('please login')
+        toast.warning('Please Login')
         navigate('/login')
       }
     }
@@ -47,7 +49,15 @@ const ViewProduct = () => {
 
         </CardBody>
         <div>
-          <Button onClick={AddCart} variant="outline-dark">Add To Cart</Button>
+        {cart.find((cartItem) => cartItem.Id === item.Id) ? (
+                  <Button variant="outline-dark" onClick={()=>navigate('/cart')}>
+                    Go To Cart
+                  </Button>
+                ) : (
+                  <Button variant="outline-dark" onClick={AddCart}>
+                    Add To Cart
+                  </Button>
+                )}
         </div>
       </Card>
     </div>
