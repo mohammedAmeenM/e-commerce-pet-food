@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
@@ -8,11 +8,24 @@ const AdminLogin = () => {
     const navigate =useNavigate();
     const adminName=useRef();
     const adminPassword=useRef();
+    const [error,setErrorMessage]=useState('');
     const handileAdmin=()=>{
         const newAdminName=adminName.current.value
         const newAdminPassword=adminPassword.current.value
-        console.log(newAdminName)
-        console.log(newAdminPassword);
+
+        if(!newAdminName || !newAdminPassword){
+          setErrorMessage('Please fill in all fields.');
+          return;
+
+        }
+        if(newAdminName!=='admin'){
+          setErrorMessage('Please Enter correct Username');
+          return;
+        }
+        if(newAdminPassword!=='admin123'){
+          setErrorMessage('please enter correct Password')
+        }
+       
         if(newAdminName==='admin'&&newAdminPassword==='admin123'){
             toast.success('admin Login success')
             navigate('/adminpage')
@@ -60,6 +73,9 @@ const AdminLogin = () => {
             />
             <br />
             <br />
+            {error && (
+            <p style={{ color: 'red' ,textAlign:'center' }}>{error}</p>
+          )}
             <div style={{textAlign:'center'}}>
               <div >
                 <Button onClick={handileAdmin} variant="outline-dark" >

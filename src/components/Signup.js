@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
-import { toast } from "react-toastify";
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -10,13 +10,15 @@ const Signup = () => {
   const nameRef = useRef(null);
   const emailRef=useRef(null);
   const passwordRef = useRef(null);
+
   const [errorMessage, setErrorMessage] = useState('');
+
   const submitClick = (e) => {
     e.preventDefault();
     const setName = nameRef.current.value;
     const setEmail=emailRef.current.value;
     const setPassword = passwordRef.current.value;
-    const value = { name: setName, password: setPassword };
+    
 
     if (!setName || !setEmail || !setPassword) {
       setErrorMessage('Please fill in all fields.');
@@ -27,7 +29,7 @@ const Signup = () => {
       setErrorMessage('Please enter a valid email address.');
       return;
     }
-    if (setPassword.length < 4) {
+    if (setPassword.length < 6) {
       setErrorMessage('Password must be at least 6 characters long.');
       return;
     }
@@ -45,7 +47,7 @@ const Signup = () => {
         style={{ width: "500px", alignItems: "center", borderRadius: "20px" ,background: 'rgb(230, 230, 219)'}}
       >
         <h1 style={{ textAlign: "center" }}>Sign up</h1>
-        <Form
+        <Form  
           className="border p-4 m-4 bg-white"
           style={{ borderRadius: "20px", textAlign: "center" }}
         >

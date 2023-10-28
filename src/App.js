@@ -11,9 +11,11 @@ import { createContext, useState } from "react";
 import { Product } from "./components/ProductData";
 import ViewProduct from "./components/ViewProduct";
 import AdminLogin from "./admin/AdminLogin";
-import AdminPage from "./admin/SideBar";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import AdminMainPage from "./admin/AdminMainPage";
+import AdminUsers from "./admin/AdminUsers";
+import SideBar from "./admin/SideBar";
 
 
 
@@ -40,7 +42,9 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/viewproduct/:id" element={<ViewProduct />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
-          <Route path="/adminpage" element={<AdminPage />} />
+          <Route path='/adminpage' element={<AdminMainPage />} />
+          <Route path="/adminuser" element={<AdminUsers />} />
+          <Route path="/side" element={<SideBar />} />
         </Routes>
       </UserLogin.Provider>
       <ToastContainer />
