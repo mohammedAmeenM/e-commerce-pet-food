@@ -15,7 +15,10 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import AdminMainPage from "./admin/AdminMainPage";
 import AdminUsers from "./admin/AdminUsers";
-import SideBar from "./admin/SideBar";
+import AdminProducts from "./admin/AdminProducts";
+import AdminAddProducts from "./admin/AdminAddProducts"
+import EditProduct from "./admin/EditProduct";
+
 
 
 
@@ -24,14 +27,14 @@ export const UserLogin = createContext();
 function App() {
   const [user, setUser] = useState([]);
   const [login, setLogin] = useState(false);
-  const [product]=useState(Product);
+  const [product,setProduct]=useState(Product);
   const [cart,setCart]=useState([]);
   const [search,setSearch]=useState('');
   
 
   return (
     <div className="App">
-      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,cart,setCart,search,setSearch }}>
+      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,setProduct,cart,setCart,search,setSearch }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
@@ -44,7 +47,10 @@ function App() {
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path='/adminpage' element={<AdminMainPage />} />
           <Route path="/adminuser" element={<AdminUsers />} />
-          <Route path="/side" element={<SideBar />} />
+          <Route path="/adminproduct" element={<AdminProducts />} />
+          <Route path="/addproduct" element={<AdminAddProducts />} />
+          <Route path="/editproduct" element={<EditProduct />} />
+          
         </Routes>
       </UserLogin.Provider>
       <ToastContainer />
