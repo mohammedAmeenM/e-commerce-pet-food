@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi2";
 import { RiAdminFill } from "react-icons/ri";
 import { CiLogin } from "react-icons/ci";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, NavDropdown } from "react-bootstrap";
 import { UserLogin } from "../App";
 import {CiLogout} from 'react-icons/ci'
 import { toast } from "react-toastify";
@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 const Navigationbar = () => {
   const navigate = useNavigate();
   const {search,setSearch,product}=useContext(UserLogin)
-  const {login,setLogin,setCart}=useContext(UserLogin)
+  const {login,setLogin,setCart,user}=useContext(UserLogin)
   const filteredProducts = product.filter((product) =>
   product.ProductName.toLowerCase().includes(search.toLowerCase())
 );
@@ -81,10 +81,13 @@ else{
             </Nav.Link>
             
                 
+             
           
-          { login?<Nav.Link  style={{ fontSize: "27px" }} onClick={Logout}>
-              <CiLogout />
-            </Nav.Link>: <Nav.Link
+          { login?user.map((item)=>(
+            <NavDropdown style={{ fontSize: "27px" }} title={<CiLogout  onClick={Logout}/>} id="basic-nav-dropdown">
+            <NavDropdown.Item >{item.name}</NavDropdown.Item>
+            </NavDropdown>
+          )): <Nav.Link
               onClick={() => navigate("/login")}
               style={{ fontSize: "27px" }}
             >

@@ -17,7 +17,7 @@ const AdminProducts = () => {
      
 
       <Container fluid className='mt-3'  style={{overflow:'scroll',height:'90vh'}} >
-      <h1 className='mb-4' style={{textAlign:'center'}}>All products</h1>
+      <h1 className='mb-4' style={{textAlign:'center'}}>All products</h1><hr />
       <Table striped bordered hover >
       <thead>
           <tr>
@@ -37,7 +37,7 @@ const AdminProducts = () => {
                 <td>{item.Price}</td>
                 <td>{item.Animal}</td>
                 <td style={{textAlign:'center'}} >
-                  <Button style={{marginRight:'30px'}} onClick={()=>navigate('/editproduct')}>Edit</Button>
+                  <Button style={{marginRight:'30px'}} onClick={()=>navigate(`/editproduct/${item.Id}`)}>Edit</Button>
                   <Button className='bg-danger' onClick={()=>Remove(item.Id)} >Remove</Button>
                   </td>
               </tr>

@@ -49,8 +49,7 @@ function App() {
           <Route path="/adminuser" element={<AdminUsers />} />
           <Route path="/adminproduct" element={<AdminProducts />} />
           <Route path="/addproduct" element={<AdminAddProducts />} />
-          <Route path="/editproduct" element={<EditProduct />} />
-          
+          <Route path="/editproduct/:id" element={<EditProduct />} />
         </Routes>
       </UserLogin.Provider>
       <ToastContainer />

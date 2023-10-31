@@ -1,15 +1,14 @@
 import React, { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Product } from './ProductData'
 import { Button, Card, CardBody, CardImg, CardTitle, Container } from 'react-bootstrap'
 import { UserLogin } from '../App'
 import Navigationbar from './Navigationbar'
 import { toast } from 'react-toastify'
 const ViewProduct = () => {
   const navigate=useNavigate()
-  const {login,cart,setCart}=useContext(UserLogin);
+  const {login,cart,setCart,product}=useContext(UserLogin)
     const {id}=useParams();
-    const filteredProduct=Product.filter((item)=>item.Id===parseInt(id))
+    const filteredProduct=product.filter((item)=>item.Id===parseInt(id))
     const AddCart=()=>{
       if(login){
         const [newFilter]=filteredProduct;
