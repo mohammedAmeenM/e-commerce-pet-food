@@ -10,6 +10,7 @@ const AdminProducts = () => {
   const Remove=(id)=>{
       const newUpdate=product.filter((item)=>item.Id !==id)
       setProduct(newUpdate)
+      
   }
   return (
     <div style={{ display: 'flex' }}>
