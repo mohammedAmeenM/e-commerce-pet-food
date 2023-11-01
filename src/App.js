@@ -18,6 +18,7 @@ import AdminUsers from "./admin/AdminUsers";
 import AdminProducts from "./admin/AdminProducts";
 import AdminAddProducts from "./admin/AdminAddProducts"
 import EditProduct from "./admin/EditProduct";
+import ViewOrder from "./admin/ViewOrder";
 
 
 
@@ -30,11 +31,13 @@ function App() {
   const [product,setProduct]=useState(Product);
   const [cart,setCart]=useState([]);
   const [search,setSearch]=useState('');
+
+  const [buy,setBuy]=useState([])
   
 
   return (
     <div className="App">
-      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,setProduct,cart,setCart,search,setSearch }}>
+      <UserLogin.Provider value={{ user, setUser, login, setLogin,product,setProduct,cart,setCart,search,setSearch,buy,setBuy}}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
@@ -50,6 +53,7 @@ function App() {
           <Route path="/adminproduct" element={<AdminProducts />} />
           <Route path="/addproduct" element={<AdminAddProducts />} />
           <Route path="/editproduct/:id" element={<EditProduct />} />
+          <Route path="/vieworder" element={<ViewOrder />} />
         </Routes>
       </UserLogin.Provider>
       <ToastContainer />

@@ -17,7 +17,7 @@ const ViewProduct = () => {
             toast.warning('product already set to cart')
        }
        else{ 
-        setCart (prevState => [...prevState, newFilter]);
+        setCart ([...cart,newFilter]);
        
        toast.success('Successful add to cart')
         
@@ -39,11 +39,12 @@ const ViewProduct = () => {
         filteredProduct.map((item)=>(
             <div key={item.Id} style={{alignItems:'center'}}>
 
-        <Card  className="shadow p-3 m-2 bg-body-tertiary rounded" style={{ width: '18rem', height: '28rem', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Card  className="shadow p-1 m-2 bg-body-tertiary rounded" style={{ width: '18rem', height: '28rem', alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         <CardBody>
           <CardImg style={{ height: '15rem' }} className='p-2' variant="top" src={item.Image} /><br />
           <CardTitle style={{textAlign:'center'}}>{item.ProductName}</CardTitle>
-          <h6 style={{textAlign:'center'}}>Price : {item.Price}</h6>
+          <h6 style={{textAlign:'center'}}>Price : <del>{item.OldPrice}</del></h6>
+          <h6 style={{textAlign:'center'}}>Offer Price : {item.Price}</h6>
           <p style={{textAlign:'center'}}>Animal : {item.Animal}</p>
 
         </CardBody>

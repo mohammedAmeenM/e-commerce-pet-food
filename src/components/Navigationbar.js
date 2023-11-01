@@ -12,14 +12,18 @@ import { UserLogin } from "../App";
 import {CiLogout} from 'react-icons/ci'
 import { toast } from "react-toastify";
 
+
+
+
+
 const Navigationbar = () => {
   const navigate = useNavigate();
-  const {search,product}=useContext(UserLogin)
+  // const {search,product}=useContext(UserLogin)
   const {login,setLogin,setCart}=useContext(UserLogin)
-  const filteredProducts = product.filter((product) =>
-  product.ProductName.toLowerCase().includes(search.toLowerCase())
-);
-console.log(filteredProducts);
+//   const filteredProducts = product.filter((product) =>
+//   product.ProductName.toLowerCase().includes(search.toLowerCase())
+// );
+
 
 const Logout=()=>{
 if(login){
@@ -101,6 +105,7 @@ else{
           </Nav>
         </Navbar.Collapse>
       </Container>
+      
     </Navbar>
   );
 };

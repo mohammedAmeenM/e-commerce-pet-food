@@ -25,8 +25,11 @@ const AdminProducts = () => {
             <th >Id</th>
             <th >Image</th>
             <th >Name</th>
+
             <th >Price</th>
+            <th>Actual Price</th>
             <th >Animal</th>
+            <th>Stock</th>
             <th >Action</th>
           </tr>
           {
@@ -35,8 +38,10 @@ const AdminProducts = () => {
                 <td>{item.Id}</td>
                 <td style={{textAlign:'center'}}><img style={{height:'2rem'}} src={item.Image} alt={item.ProductName} /></td>
                 <td>{item.ProductName}</td>
+                <td>{item.OldPrice}</td>
                 <td>{item.Price}</td>
                 <td>{item.Animal}</td>
+                <td>{item.Stock}</td>
                 <td style={{textAlign:'center'}} >
                   <Button style={{marginRight:'30px'}} onClick={()=>navigate(`/editproduct/${item.Id}`)}>Edit</Button>
                   <Button className='bg-danger' onClick={()=>Remove(item.Id)} >Remove</Button>

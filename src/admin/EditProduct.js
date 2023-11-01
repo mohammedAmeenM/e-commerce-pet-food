@@ -14,9 +14,10 @@ const EditProduct = () => {
 
   const [productName, setProductName] = useState(editProduct.ProductName);
   const [price, setPrice] = useState(editProduct.Price);
+  const [oldPrice,setOldPrice]=useState(editProduct.OldPrice)
   const [animal, setAnimal] = useState(editProduct.Animal);
   const [image, setImage] = useState(editProduct.Image);
-  const [qty, setQty] = useState(editProduct.Qty);
+  const [stock, setStock] = useState(editProduct.Stock);
   console.log(editProduct);
   const submit = (e) => {
     e.preventDefault();
@@ -26,9 +27,10 @@ const EditProduct = () => {
       ...editProduct,
       Image: image,
       ProductName: productName,
+      OldPrice:oldPrice ,
       Price: price,
       Animal: animal,
-      Qty: qty,
+      Stock: stock,
     };
   
  
@@ -50,7 +52,7 @@ const EditProduct = () => {
         <div  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ display: 'block',  
                   width: 700,  
-                  padding: 30 }}> 
+                 }}> 
       <h4>Edit product</h4> <hr />
       <Form onSubmit={submit} > 
       <Form.Group> 
@@ -71,15 +73,23 @@ const EditProduct = () => {
         </Form.Group> 
         <Form.Group> 
           <Form.Label>Edit price:</Form.Label> 
+          <Form.Control type="text" name='OldPrice' defaultValue={editProduct.OldPrice} onChange={(e) => setOldPrice(e.target.value)}/> 
+        </Form.Group> 
+        <Form.Group> 
+          <Form.Label>Edit Actual price:</Form.Label> 
           <Form.Control type="text" name='Price' defaultValue={editProduct.Price} onChange={(e) => setPrice(e.target.value)}/> 
         </Form.Group> 
         <Form.Group> 
-          <Form.Label>Edit Animal:</Form.Label> 
-          <Form.Control type="text" name='Aminal' defaultValue={editProduct.Animal} onChange={(e) => setAnimal(e.target.value)}/> 
+          <Form.Label>Edit Animal:</Form.Label > <br />
+          <select style={{width:'200px'}}   name='Aminal' defaultValue={editProduct.Animal} onChange={(e) => setAnimal(e.target.value)}>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+       
+    </select>
         </Form.Group> 
         <Form.Group> 
-          <Form.Label>Edit Qty:</Form.Label> 
-          <Form.Control type="text" name='Qty' defaultValue={editProduct.Qty} onChange={(e)=>setQty(e.target.value)}/> 
+          <Form.Label>Edit Stock:</Form.Label> 
+          <Form.Control type="text" name='Stock' defaultValue={editProduct.Stock} onChange={(e)=>setStock(e.target.value)}/> 
         </Form.Group> 
         <Button className='m-3' type='submit' variant="primary"  > 
            Save

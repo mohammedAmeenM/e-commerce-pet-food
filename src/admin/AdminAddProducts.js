@@ -11,8 +11,10 @@ const AdminAddProducts = () => {
   const [newProduct,setNewProduct]=useState({
     ProductName:'',  
     Image:'',
+    OldPrice:'',
     Price:'',
-    Animal:''
+    Animal:'',
+    Stock:''
   })
   const [newId,setNewId]=useState(0)  
   product.forEach((item) => {
@@ -30,15 +32,18 @@ const AdminAddProducts = () => {
   }
   const handileAdd=(e)=>{
     e.preventDefault();
-    if(!newProduct.Image||!newProduct.ProductName||!newProduct.Price||!newProduct.Animal){
+    if(!newProduct.Image||!newProduct.ProductName||!newProduct.OldPrice||!newProduct.Price||!newProduct.Animal||!newProduct.Stock){
       toast.error('fill')
     }
     const newProductList={
       Id:AddId,
       Image:newProduct.Image,
       ProductName: newProduct.ProductName,
+      OldPrice:newProduct.OldPrice,
       Price: newProduct.Price,
+      Qty:1,
       Animal: newProduct.Animal,
+      Stock:newProduct.Stock
     }
     console.log(newProductList);
 
@@ -49,7 +54,7 @@ const AdminAddProducts = () => {
   return (
     <div style={{ display: 'flex' }}>
       <SideBar />
-      <div style={{ flex: 1, textAlign: 'center', padding: '20px' }}>
+      <div style={{ flex: 1, textAlign: 'center'}}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h1 >Add products</h1><br />
         <Form style={{width:"500px"}} > 
@@ -79,17 +84,25 @@ const AdminAddProducts = () => {
         </Form.Group> 
         <Form.Group> 
           <Form.Label>Add price:</Form.Label> 
-          <Form.Control type="text" name='Price'  placeholder='Price' value={newProduct.Price} onChange={handleChange} required/> 
-        </Form.Group> 
+          <Form.Control type="text" name='OldPrice'  placeholder='Price' value={newProduct.OldPrice} onChange={handleChange} required/> 
+        </Form.Group > 
         <Form.Group> 
-
-          <Form.Label>Add Animal:</Form.Label> 
-          <Form.Control type="text" name='Animal' placeholder='Dog or Cat' value={newProduct.Animal} onChange={handleChange} required/> 
+          <Form.Label>Add Actual price:</Form.Label> 
+          <Form.Control type="text" name='Price'  placeholder='Actual Price' value={newProduct.Price} onChange={handleChange} required/> 
+        </Form.Group > 
+        <Form.Group> 
+          <Form.Label>Add Stock:</Form.Label> 
+          <Form.Control type="text" name='Stock'  placeholder='Stock' value={newProduct.Stock} onChange={handleChange} required/> 
+        </Form.Group > <br /> 
+        <Form.Group> 
+          <Form.Label>Select Animal:</Form.Label> <br />
+          <select style={{width:'200px'}} type="text"  name='Animal'   value={newProduct.Animal}  onChange={handleChange} required>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+       
+    </select>
         </Form.Group> 
-        {/* <Form.Group> 
-          <Form.Label>Edit Qty:</Form.Label> 
-          <Form.Control type="text" name='Qty' placeholder='Quandity'/> 
-        </Form.Group>  */}
+        
         <Button className='mt-3' type='submit' variant="primary" onClick={handileAdd} > 
            Save
         </Button> 

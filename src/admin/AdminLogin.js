@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, {  useRef, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
 
 const AdminLogin = () => {
+ 
     const navigate =useNavigate();
     const adminName=useRef();
     const adminPassword=useRef();
@@ -25,8 +26,9 @@ const AdminLogin = () => {
         if(newAdminPassword!=='admin123'){
           setErrorMessage('please enter correct Password')
         }
-       
-        if(newAdminName==='admin'&&newAdminPassword==='admin123'){
+       const Admin=newAdminName==='admin'&&newAdminPassword==='admin123';
+        if(Admin){
+         
             toast.success('admin Login success')
             navigate('/adminpage')
         }
@@ -88,6 +90,7 @@ const AdminLogin = () => {
         </div>
       </Container>
     </div>
+    
     </div>
   )
 }
