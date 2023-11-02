@@ -3,51 +3,57 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
 
-
 const Signup = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserLogin);
   const nameRef = useRef(null);
-  const emailRef=useRef(null);
+  const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const submitClick = (e) => {
     e.preventDefault();
     const setName = nameRef.current.value;
-    const setEmail=emailRef.current.value;
+    const setEmail = emailRef.current.value;
     const setPassword = passwordRef.current.value;
-    
 
     if (!setName || !setEmail || !setPassword) {
-      setErrorMessage('Please fill in all fields.');
+      setErrorMessage("Please fill in all fields.");
       return;
-    } 
-    const isEmailValid = setEmail.includes('@') && setEmail.includes('.');  
+    }
+    const isEmailValid = setEmail.includes("@") && setEmail.includes(".");
     if (!isEmailValid) {
-      setErrorMessage('Please enter a valid email address.');
+      setErrorMessage("Please enter a valid email address.");
       return;
     }
     if (setPassword.length < 6) {
-      setErrorMessage('Password must be at least 6 characters long.');
+      setErrorMessage("Password must be at least 6 characters long.");
       return;
     }
-    setErrorMessage('');
+    setErrorMessage("");
 
-      setUser([...user, { name: setName, email: setEmail, password: setPassword }]);
+    setUser([
+      ...user,
+      { name: setName, email: setEmail, password: setPassword },
+    ]);
     console.log(user);
-    navigate('/login')
+    navigate("/login");
   };
 
   return (
     <div style={{ alignItems: "center" }} className="p-4  mt-4 ">
       <Container
         className="border p-4  mt-5 "
-        style={{ width: "500px", alignItems: "center", borderRadius: "20px" ,background: 'rgb(230, 230, 219)'}}
+        style={{
+          width: "500px",
+          alignItems: "center",
+          borderRadius: "20px",
+          background: "rgb(230, 230, 219)",
+        }}
       >
         <h1 style={{ textAlign: "center" }}>Sign up</h1>
-        <Form  
+        <Form
           className="border p-4 m-4 bg-white"
           style={{ borderRadius: "20px", textAlign: "center" }}
         >
@@ -96,9 +102,7 @@ const Signup = () => {
           />
           <br />
           <br />
-          {errorMessage && (
-            <p style={{ color: 'red' }}>{errorMessage}</p>
-          )}
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 
           <Button variant="outline-dark" onClick={submitClick}>
             Submit

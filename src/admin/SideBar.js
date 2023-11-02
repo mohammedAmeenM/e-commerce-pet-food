@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from "react";
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -6,20 +6,23 @@ import {
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
-} from 'cdbreact';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { UserLogin } from '../App';
+} from "cdbreact";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
-  const navigate=useNavigate()
-  const {setAdmin}=useContext(UserLogin)
-  console.log(setAdmin);
- 
+  
+
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+    <div
+      style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
+    >
       <CDBSidebar textColor="#fff" backgroundColor="#221">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <NavLink to='/adminpage'className="text-decoration-none" style={{ color: 'inherit' }}>
+          <NavLink
+            to="/adminpage"
+            className="text-decoration-none"
+            style={{ color: "inherit" }}
+          >
             Admin
           </NavLink>
         </CDBSidebarHeader>
@@ -41,17 +44,13 @@ const SideBar = () => {
             <NavLink exact to="/adminpage" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Admin Home</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to='/' activeClassName="activeClicked">
-              <CDBSidebarMenuItem  icon="home">Home</CDBSidebarMenuItem>
+            <NavLink exact to="/" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
-
-          
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
-        <CDBSidebarFooter style={{ textAlign: 'center' }}>
-          
-        </CDBSidebarFooter>
+        <CDBSidebarFooter style={{ textAlign: "center" }}></CDBSidebarFooter>
       </CDBSidebar>
     </div>
   );

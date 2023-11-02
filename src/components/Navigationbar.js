@@ -9,38 +9,36 @@ import { RiAdminFill } from "react-icons/ri";
 import { CiLogin } from "react-icons/ci";
 
 import { UserLogin } from "../App";
-import {CiLogout} from 'react-icons/ci'
+import { CiLogout } from "react-icons/ci";
 import { toast } from "react-toastify";
-
-
-
-
 
 const Navigationbar = () => {
   const navigate = useNavigate();
   // const {search,product}=useContext(UserLogin)
-  const {login,setLogin,setCart}=useContext(UserLogin)
-//   const filteredProducts = product.filter((product) =>
-//   product.ProductName.toLowerCase().includes(search.toLowerCase())
-// );
+  const { login, setLogin, setCart } = useContext(UserLogin);
+  //   const filteredProducts = product.filter((product) =>
+  //   product.ProductName.toLowerCase().includes(search.toLowerCase())
+  // );
 
-
-const Logout=()=>{
-if(login){
-  setLogin(false)
-  setCart([])
-  toast.success('Logout Success')
-}
-else{
-  
-  navigate('/login')
-}
-}
+  const Logout = () => {
+    if (login) {
+      setLogin(false);
+      setCart([]);
+      toast.success("Logout Success");
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <Navbar expand="lg" className="nav" sticky="top">
       <Container fluid className="nav-bar">
         <Navbar.Brand>
-          <h1 style={{cursor:'pointer'}} className="nav-title" onClick={() => navigate("/")}>
+          <h1
+            title="Home"
+            style={{ cursor: "pointer" }}
+            className="nav-title"
+            onClick={() => navigate("/")}
+          >
             Pets Foods
           </h1>
         </Navbar.Brand>
@@ -55,11 +53,14 @@ else{
             </Nav.Link>
             <Nav.Link
               className="underline-cat "
-              onClick={() => navigate('/cat')}
+              onClick={() => navigate("/cat")}
             >
               Cat
             </Nav.Link>
-            <Nav.Link className="underline-dog" onClick={() => navigate("/dog")}>
+            <Nav.Link
+              className="underline-dog"
+              onClick={() => navigate("/dog")}
+            >
               Dog
             </Nav.Link>
           </Nav>
@@ -80,32 +81,35 @@ else{
             <Nav.Link
               onClick={() => navigate("/cart")}
               style={{ fontSize: "27px" }}
+              title="Cart"
             >
               <HiShoppingCart />
             </Nav.Link>
-            
-                
-             
-          
-          { login?
-            <Nav.Link style={{ fontSize: "27px" }}  >
-              <CiLogout  onClick={Logout}/>
-            </Nav.Link>
-          : <Nav.Link
-              onClick={() => navigate("/login")}
+
+            {login ? (
+              <Nav.Link style={{ fontSize: "27px" }} title="logout">
+                <CiLogout onClick={Logout} />
+              </Nav.Link>
+            ) : (
+              <Nav.Link
+                onClick={() => navigate("/login")}
+                style={{ fontSize: "27px" }}
+                title="login"
+              >
+                <CiLogin />
+              </Nav.Link>
+            )}
+
+            <Nav.Link
               style={{ fontSize: "27px" }}
+              onClick={() => navigate("/adminlogin")}
+              title="Admin"
             >
-              <CiLogin />
-            </Nav.Link>
-          } 
-           
-            <Nav.Link style={{ fontSize: "27px" }} onClick={()=>navigate('/adminlogin')}>
               <RiAdminFill />
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
-      
     </Navbar>
   );
 };
