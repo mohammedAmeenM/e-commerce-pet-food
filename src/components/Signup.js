@@ -32,11 +32,8 @@ const Signup = () => {
       return;
     }
     setErrorMessage("");
-
-    setUser([
-      ...user,
-      { name: setName, email: setEmail, password: setPassword },
-    ]);
+       const value ={ name: setName, email: setEmail, password: setPassword }
+    setUser([...user,value]);
     console.log(user);
     navigate("/login");
   };

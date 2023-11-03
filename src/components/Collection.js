@@ -7,23 +7,46 @@ import {
   CardImg,
   CardTitle,
   Container,
+  Form,
 } from "react-bootstrap";
 import Navigationbar from "./Navigationbar";
 import { useNavigate } from "react-router-dom";
 
 const Collection = () => {
   const navigate = useNavigate();
-  const { product } = useContext(UserLogin);
+  const { product ,search,setSearch} = useContext(UserLogin);
+  const Searches=product.filter((srh)=>{
+    if(search===''){
+      return srh;
+    }else if(srh.ProductName.toLowerCase().includes(search.toLowerCase())){
+      return srh;
+    }
+  })
 
   return (
     <div style={{ background: "rgb(230, 230, 219)" }}>
       <Navigationbar />
+     <Container fluid>
+
+      <Form className=" m-4"  >
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                value={search}
+                onChange={(e)=>setSearch(e.target.value)}
+                style={{height:'45px',width:'250px'}}
+                />
+            </Form>
+                </Container>
+
       <Container>
         <h1 style={{ textAlign: "center", padding: "10px" }}>Collections</h1>
         <hr />
 
         <div className="d-flex align-items-center justify-content-center flex-wrap">
-          {product.map((item) => (
+          {Searches.map((item) => (
             <div
               key={item.Id}
               className="d-flex align-items-center justify-content-center flex-wrap"
