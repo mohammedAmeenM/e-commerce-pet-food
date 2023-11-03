@@ -15,13 +15,15 @@ import { useNavigate } from "react-router-dom";
 const Collection = () => {
   const navigate = useNavigate();
   const { product ,search,setSearch} = useContext(UserLogin);
-  const Searches=product.filter((srh)=>{
+  const Searches=product.filter((srch)=>{
     if(search===''){
-      return srh;
-    }else if(srh.ProductName.toLowerCase().includes(search.toLowerCase())){
-      return srh;
+      return srch;
+    }else if(srch.ProductName.toLowerCase().includes(search.toLowerCase())){
+      return srch;
+    }else{
+      return ''
     }
-  })
+   } )
 
   return (
     <div style={{ background: "rgb(230, 230, 219)" }}>
