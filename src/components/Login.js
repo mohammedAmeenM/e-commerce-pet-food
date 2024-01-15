@@ -3,16 +3,15 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-   const { user, setLogin } = useContext(UserLogin);
+  const { user, setLogin } = useContext(UserLogin);
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
   const [error, setErrorMessage] = useState("");
 
-  const handileclick = async(e) => {
+  const handileclick = (e) => {
     e.preventDefault();
     const newNameRef = nameRef.current.value;
     const newPasswordRef = passwordRef.current.value;
@@ -21,39 +20,24 @@ const Login = () => {
       return;
     }
 
-    try {
-      const data={
-        "username":newNameRef,
-        "password":newPasswordRef
-      };
-      const response= await axios.post("http://localhost:5000/api/users/login",data)
-      localStorage.setItem("user_Token",response.data.token)
-      console.log(response.data.token);
-      toast.success('success');
-      navigate('/');
-
-    } catch (error) {
-      console.error(error)
+    const findName = user.find((users) => users.name === newNameRef);
+    const findPassword = user.find(
+      (users) => users.password === newPasswordRef
+    );
+    if (!findName) {
+      setErrorMessage("Please correct Username");
+      return;
+    }
+    if (!findPassword) {
+      setErrorMessage("please correct Password");
+      return;
     }
 
-    // const findName = user.find((users) => users.name === newNameRef);
-    // const findPassword = user.find(
-    //   (users) => users.password === newPasswordRef
-    // );
-    // if (!findName) {
-    //   setErrorMessage("Please correct Username");
-    //   return;
-    // }
-    // if (!findPassword) {
-    //   setErrorMessage("please correct Password");
-    //   return;   
-    // }
-
-    // if (findName && findPassword) {
-    //   setLogin(true);
-    //   navigate("/");
-    //   toast.success("Login Success!");
-    // }
+    if (findName && findPassword) {
+      setLogin(true);
+      navigate("/");
+      toast.success("Login Success!");
+    }
   };
 
   return (

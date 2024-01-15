@@ -18,21 +18,6 @@ import AdminProducts from "./admin/AdminProducts";
 import AdminAddProducts from "./admin/AdminAddProducts";
 import EditProduct from "./admin/EditProduct";
 import ViewOrder from "./admin/ViewOrder";
-import axios from "axios";
-
-
-
- export const Axios=axios.create({
-  baseURL:process.env.REACT_APP_BASE_URL,
-  headers:{
-    "Content-Type":"application/json",
-    Authorization:localStorage.getItem("user_Token")
-  }
- })
- 
- console.log(process.env.REACT_APP_BASE_URL);
-
-
 
 
 export const UserLogin = createContext();
