@@ -8,7 +8,7 @@ export const Product = [
       "https://i.pinimg.com/564x/99/98/ce/9998ce370c3dd52f417d58ded40b5042.jpg",
     Animal: "Cat",
     Qty: 1,
-    Stock: 10,
+    Stock: 5,
   },
 
   {

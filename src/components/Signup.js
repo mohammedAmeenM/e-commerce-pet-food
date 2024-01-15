@@ -2,44 +2,52 @@ import React, { useContext, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../App";
+import axios from 'axios'
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserLogin);
+  
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage] = useState("");
 
-  const submitClick = (e) => {
+  const submitClick = async(e) => {
     e.preventDefault();
     const setName = nameRef.current.value;
     const setEmail = emailRef.current.value;
     const setPassword = passwordRef.current.value;
-
-    if (!setName || !setEmail || !setPassword) {
-      setErrorMessage("Please fill in all fields.");
-      return;
-    }
-    const isEmailValid = setEmail.includes("@") && setEmail.includes(".");
-    if (!isEmailValid) {
-      setErrorMessage("Please enter a valid email address.");
-      return;
-    }
-    if (setPassword.length < 6) {
-      setErrorMessage("Password must be at least 6 characters long.");
-      return;
-    }
-    if (user.find((sameuser) => sameuser.name === setName)) {
-      setErrorMessage("Username already exists. Please choose a different one.");
-      return;
-    }
-    setErrorMessage("");
+   
        const value ={ name: setName, email: setEmail, password: setPassword }
+    
     setUser([...user,value]);
-    console.log(user);
-    navigate("/login");
+    
+    try {
+      const data = {
+        "username": setName,
+        "email": setEmail,
+        "password": setPassword
+      };
+    
+      console.log(data);
+    
+      const response = await axios.post("http://localhost:5000/api/users/register", data, {
+      headers: {
+         "Content-Type": "application/json"
+        }
+        });
+    
+      console.log(response);
+      toast.success('success');
+      navigate('/login');
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message || 'An error occurred');
+    }
+    // navigate("/login");
   };
  
 

@@ -9,7 +9,7 @@ import {
   Container,
 } from "react-bootstrap";
 import { UserLogin } from "../App";
-import Navigationbar from "./Navigationbar";
+import Navigationbar from "./Navigationbar"; 
 import { toast } from "react-toastify";
 const ViewProduct = () => {
   const navigate = useNavigate();

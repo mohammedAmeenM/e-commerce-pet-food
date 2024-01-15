@@ -26,7 +26,7 @@ const Dog = () => {
           {dogProduct.map((item) => (
             <div
               key={item.Id}
-              className="d-flex align-items-center justify-content-center flex-wrap"
+               className="d-flex align-items-center justify-content-center flex-wrap"
             >
               <Card
                 className="shadow p-3 m-2 bg-body-tertiary rounded"
